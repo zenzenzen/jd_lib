@@ -11,6 +11,7 @@ void swap(data * A, data * B){
 template<class data>
 void selection_sort(data set[], int setsize)
 {
+    /*initialization block*/
     int mindex = 0;
     int smallest = a[0];
     int smalldex; //track location of smallest
@@ -23,7 +24,7 @@ void selection_sort(data set[], int setsize)
                 smalldex = scan;
             }//if
         }//for
-        if(a[smalldex]<a[mindex]){
+        if(a[smalldex]<a[mindex]){ // prevent errors on last indices
             swap(&a[smalldex], &a[mindex]);
         }//if-swap
         mindex++;
