@@ -2,6 +2,19 @@
 #include <vector>
 using namespace std; 
 
+
+/*
+*
+* General breakdown is that I halve the size of the data,
+* that half is equal to the pivot, I check the value at the pivot and then half the 
+* data size again and check again.
+*
+* need to also write a guard against a failed search
+* condition where number is between end and start and doesn't
+* exist.
+*   produced for lab 09 of CISP 301 @ Sacramentor City College
+*/
+
 template<class data>
 bool binary_search(data search, data set[], int start, int end){
    int pivot = (end - start))/2;
@@ -19,18 +32,6 @@ bool binary_search(data search, data set[], int start, int end){
            return binary_search( search, set[], start, pivot-1);
        }
    }
-/*
-*
-* General breakdown is that I half the size of the data,
-that half is equal to the pivot,
-I check the value at the pivot and then half the 
-data size again and check again.
-*
-need to also write a guard against a failed search
-condition where number is between end and start and doesn't
-exist.
-*
-*/
     return false;
 }
 
@@ -42,6 +43,16 @@ bool linear_search(data search, data set[], int size){
             return true;
         }
     }
-    return false;
+    return false; // if loop ends, then nothing has been found
 }
 
+template<class data>
+bool linear_search(data search, vector<data>set){
+    int go = 0;
+    for(; go < set.size(); go++){
+        if(set[go] == search){
+            return true;
+        }
+    }
+    return false;
+}
