@@ -4,7 +4,7 @@ using namespace std;
 
 
 /*
-*
+* binary search function
 * General breakdown is that I halve the size of the data,
 * that half is equal to the pivot, I check the value at the pivot and then half the 
 * data size again and check again.
@@ -33,6 +33,17 @@ bool binary_search(data search, data set[], int start, int end){
        }
    }
     return false;
+}
+
+template<class data> //trying out non-recusive binary search
+bool binary_search_nonrec(data search, data set[], int size){
+    int pivot;
+    //dont need to determine iterations, just need to establish
+    //essential cases:
+    // 1. search == pivot 2. search > pivot 3. search < pivot
+    // 4. search != pivot && end - start == 1
+
+    
 }
 
 template<class data>
