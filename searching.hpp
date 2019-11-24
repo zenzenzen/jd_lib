@@ -1,8 +1,24 @@
 #include <iostream>
+#include <vector>
+using namespace std; 
 
 template<class data>
-bool binary_search(data search, data[], int setsize){
-    int pivot, end, start;
+bool binary_search(data search, data set[], int start, int end){
+   int pivot = (end - start))/2;
+   if(search == set[pivot]){
+       return true;
+   }
+   else if(end - start == 1 && search != pivot){
+       return false;
+   }
+   else{
+       if(search > set[pivot]){
+           return binary_search(search, set[], pivot+1, end);
+       }
+       else{
+           return binary_search( search, set[], start, pivot-1);
+       }
+   }
 /*
 *
 * General breakdown is that I half the size of the data,
@@ -17,3 +33,4 @@ exist.
 */
     return false;
 }
+
