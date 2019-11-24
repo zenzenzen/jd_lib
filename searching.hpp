@@ -34,3 +34,14 @@ exist.
     return false;
 }
 
+template<class data>
+bool linear_search(data search, data set[], int size){
+    int go = 0;
+    for(; go < size; go++){
+        if(set[go] == search){
+            return true;
+        }
+    }
+    return false;
+}
+
