@@ -15,7 +15,7 @@ using namespace std;
 * exist.
 *   produced for lab 09 of CISP 301 @ Sacramentor City College
 */
-
+/*
 template<class data>
 bool binary_search(data search, data set[], int start, int end){
    int pivot = start + floor(end - start)/2;
@@ -32,29 +32,35 @@ bool binary_search(data search, data set[], int start, int end){
        else{
            return binary_search(search, set, start, pivot);
        }
-   }
-} // currently, search alg still seg faults.
+   }//end else
+}
+    function works, but will remain commented out to prevent
+    function call  ambiguity. It will serve as a template.*/
 
-//this overloaded function will return an integer of the index where
-//search term was found. Assumes a sorted array.
-template<class data>
-int binary_search(data search, data set[], int start, int end){
-   int pivot = start + floor(end - start)/2;
-   if(search == set[pivot]){
-       return pivot;
-   }
-   else if(end - start == 1 && search != pivot){
-       return -1;
-   }
-   else{
-       if(search > set[pivot]){
-           return binary_search(search, set, pivot, end);
-       }
-       else{
-           return binary_search(search, set, start, pivot);
-       }
-   }
-} // currently, search alg still seg faults.
+//this function will return an integer of the index where
+//the search term was found. Assumes a sorted array.
+
+    template<class data>
+    int binary_search(data search, data set[], int start, int end){
+    int pivot = start + floor(end - start)/2;
+        if(search == set[pivot]){
+            return pivot;
+        }
+        else if(end - start == 1 && search != pivot){
+            return -1;
+        }       //end-guard
+        else if(search < set[start] || search > set[end]){
+            return -1;
+        }       //fast-fail
+        else{
+            if(search > set[pivot]){
+                return binary_search(search, set, pivot, end);
+            }
+            else{
+                return binary_search(search, set, start, pivot);
+            } //end else-else
+        }// end else
+    }
 
 template<class data> //trying out non-recusive binary search
 bool binary_search_nonrec(data search, data set[], int size){
