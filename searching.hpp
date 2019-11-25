@@ -17,7 +17,7 @@ using namespace std;
 
 template<class data>
 bool binary_search(data search, data set[], int start, int end){
-   int pivot = (end - start))/2;
+   int pivot = (end - start)/2;
    if(search == set[pivot]){
        return true;
    }
