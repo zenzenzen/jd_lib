@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 #include <vector>
 using namespace std; 
 
@@ -17,7 +18,7 @@ using namespace std;
 
 template<class data>
 bool binary_search(data search, data set[], int start, int end){
-   int pivot = (end - start))/2;
+   int pivot = start + floor(end - start)/2;
    if(search == set[pivot]){
        return true;
    }
@@ -26,10 +27,10 @@ bool binary_search(data search, data set[], int start, int end){
    }
    else{
        if(search > set[pivot]){
-           return binary_search(search, set, pivot+1, end);
+           return binary_search(search, set, pivot, end);
        }
        else{
-           return binary_search( search, set, start, pivot-1);
+           return binary_search(search, set, start, pivot);
        }
    }
     return false;
