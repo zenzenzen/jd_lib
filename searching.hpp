@@ -33,7 +33,27 @@ bool binary_search(data search, data set[], int start, int end){
            return binary_search(search, set, start, pivot);
        }
    }
-    return false;
+} // currently, search alg still seg faults.
+
+//this overloaded function will return an integer of the index where
+//search term was found. Assumes a sorted array.
+template<class data>
+int binary_search(data search, data set[], int start, int end){
+   int pivot = start + floor(end - start)/2;
+   if(search == set[pivot]){
+       return pivot;
+   }
+   else if(end - start == 1 && search != pivot){
+       return -1;
+   }
+   else{
+       if(search > set[pivot]){
+           return binary_search(search, set, pivot, end);
+       }
+       else{
+           return binary_search(search, set, start, pivot);
+       }
+   }
 } // currently, search alg still seg faults.
 
 template<class data> //trying out non-recusive binary search
