@@ -33,18 +33,31 @@ bool binary_search(data search, data set[], int start, int end){
        }
    }
     return false;
-}
+} // requires further testing
 
 template<class data> //trying out non-recusive binary search
 bool binary_search_nonrec(data search, data set[], int size){
-    int pivot;
     //dont need to determine iterations, just need to establish
     //essential cases:
     // 1. search == pivot 2. search > pivot 3. search < pivot
     // 4. search != pivot && end - start == 1
-
-    
-}
+    int pivot = size/2;
+    int start = 0, end = size;
+    while(pivot < end && pivot > start){
+        if(search ==  set[pivot]){
+            return true;
+        }
+        else if(search > set[pivot]){
+            start = pivot+1;
+            pivot = start + ((end - start)/2);
+        }
+        else{
+            end = pivot-1;
+            pivot = end/2;
+        }
+    }
+    return false;
+} // need to test
 
 template<class data>
 bool linear_search(data search, data set[], int size){
