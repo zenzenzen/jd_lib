@@ -16,8 +16,8 @@ void selection_sort(data set[], int setsize)
     int smalldex; //track location of smallest
 
     while(mindex < setsize){
-        int scan = mindex+1;
-        for(; scan < setsize; scan++){
+        
+        for(int scan = mindex+1; scan < setsize; scan++){
             if(a[scan] < smallest){
                 smallest = a[scan];
                 smalldex = scan;
