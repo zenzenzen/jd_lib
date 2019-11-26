@@ -32,6 +32,7 @@ void selection_sort(data set[], int setsize)
     }//end while
 }
 
+// this is the helper method
 template<class data>
 int partition(data set[], int start, int end){
 // need a variable to keep track of pivot location
@@ -51,6 +52,7 @@ int index = start;
     }//end for
 }//end paritition function
 
+// this is what's known as the wrapper method
 template<class data>
 void quick_sort(data set[], int start, int end){
     int pivot = partition(set, start, end);
