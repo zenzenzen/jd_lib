@@ -52,5 +52,8 @@ int index = start;
 
 template<class data>
 void quick_sort(data set[], int start, int end){
+    int pivot = partition(set, start, end);
+    quick_sort(set, pivot + 1, end);
+    quick_sort(set, start, pivot - 1);
 
 }
