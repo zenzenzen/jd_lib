@@ -29,7 +29,7 @@ void selection_sort(data set[], int setsize)
         }//if-swap
         mindex++;
         smallest = a[mindex];
-    }
+    }//end while
 }
 
 template<class data>
@@ -41,14 +41,15 @@ int pivotIndex = end;
 int index = start;
     for(;index < end; index++){
         if(set[index] < pivot){
-            swap(set[index], set[pivotIndex - 1]);
+            swap(set[index], set[pivotIndex]);
+            pivotIndex = index;
         }
         else if(set[index] > pivot){
-            swap(set[index], set[pivotIndex + 1])
+            swap(set[index], set[pivotIndex]);
+            pivotIndex = index;
         }
-    }
-
-}
+    }//end for
+}//end paritition function
 
 template<class data>
 void quick_sort(data set[], int start, int end){
