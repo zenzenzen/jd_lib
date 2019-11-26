@@ -88,14 +88,13 @@ bool binary_search_nonrec(data search, data set[], int size){
 
 template<class data>
 bool linear_search(data search, data set[], int size){
-    int go = 0;
-    for(; go < size; go++){
+    for(int go = 0; go < size; go++){
         if(set[go] == search){
             return true;
         }
-    }
+    }//end for
     return false; // if loop ends, then nothing has been found
-}
+}//end line search
 
 template<class data>
 bool linear_search(data search, vector<data>set){
