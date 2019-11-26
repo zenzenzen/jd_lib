@@ -36,7 +36,7 @@ template<class data>
 int partition(data set[], int start, int end){
 // need a variable to keep track of pivot location
 //need a way to tell when to swap two numbers.--can just swap around?
-int pivot = set[end];
+int pivot = *set[end];
 int pivotIndex = end;
 int index = start;
     for(;index < end; index++){
