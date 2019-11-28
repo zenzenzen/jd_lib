@@ -51,6 +51,14 @@ int index = start;
         }
     }//end for
 }//end paritition function
+/*
+    In the base case of the partition, we need to get down
+     to where there are no more comparisons to be made where
+     the pivot number is the same as the end and the start. Or, 
+     in other words, end - start = 0;
+    In other cases, like with only two numbers, we would like to
+    figure out if the number 
+*/
 
 // this is what's known as the wrapper method
 template<class data>
