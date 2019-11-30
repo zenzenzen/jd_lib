@@ -40,6 +40,9 @@ int partition(data set[], int start, int end){
 int pivot = *set[end];
 int pivotIndex = end;
 int index = start;
+    if(end - start == 0){
+        return pivot;
+    }
     for(;index < end; index++){
         if(set[index] < pivot){
             swap(set[index], set[pivotIndex - 1]);
@@ -51,10 +54,21 @@ int index = start;
         }
     }//end for
 }//end paritition function
+/*
+    In the base case of the partition, we need to get down
+     to where there are no more comparisons to be made where
+     the pivot number is the same as the end and the start. Or, 
+     in other words, end - start = 0;
+    In other cases, like with only two numbers, we would like to
+    figure out if the number 
+*/
 
 // this is what's known as the wrapper method
 template<class data>
 void quick_sort(data set[], int start, int end){
+    if(end - start == 0){
+        return;
+    }
     int pivot = partition(set, start, end);
     quick_sort(set, pivot + 1, end);
     quick_sort(set, start, pivot - 1);
