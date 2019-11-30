@@ -69,7 +69,6 @@ void quick_sort(data set[], int start, int end){
     if(end - start == 0){
         return;
     }
-    
     int pivot = partition(set, start, end);
     quick_sort(set, pivot + 1, end);
     quick_sort(set, start, pivot - 1);
