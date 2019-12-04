@@ -8,6 +8,23 @@ void swap(data * A, data * B){
     *A = temp;
 }
 
+//Bubble sort program designed iterate through an array
+//and continue iterating until it can no longer find items
+//to iterate through.
+template<class data>
+void bubble_sort(data set[], int setsize){
+    bool swapped = true;
+    while(swapped){
+        swapped = false;
+        for(int i = 0; i < setsize; i++){
+            if(set[i] < set[i+1]){
+                swap(set[i], set[i+1]);
+                swapped = true;
+            }//swap if left is bigger than right
+        }//for-loop
+    }//while    
+}
+
 template<class data>
 void selection_sort(data set[], int setsize)
 {
@@ -15,9 +32,7 @@ void selection_sort(data set[], int setsize)
     int mindex = 0;
     int smallest = a[0];
     int smalldex; //track location of smallest
-
     while(mindex < setsize){
-        
         for(int scan = mindex+1; scan < setsize; scan++){
             if(a[scan] < smallest){
                 smallest = a[scan];
