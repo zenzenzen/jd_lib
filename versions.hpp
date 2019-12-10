@@ -10,7 +10,7 @@ template<class data>
 data addit(data a[], data size){
     data sum = 0, i = 0;
     for(; i < size; i++){
-        sum += a[i];
+        sum = sum + a[i];
     }
     return sum;
 }
