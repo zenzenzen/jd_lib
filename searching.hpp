@@ -107,3 +107,16 @@ bool linear_search(data search, vector<data>set){
     }
     return false;
 }
+
+// find the largest value in an array
+// without regard to negative or positive
+template<class data>
+int find_max(int arr[], int elems){
+    int *iptr = new int &thing;
+    *iptr = arr[0];
+    for(int i = 0; i < elems; i ++){
+        if(*iptr < a[i]){
+            *iptr = a[i];
+        }
+    }
+}
