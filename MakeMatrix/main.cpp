@@ -13,6 +13,8 @@ int main() {
   int sizeA = 4;
   int sizeB = 3;
   int setA[] = {1, 2, 3, 4};
+
+  int numPairs = 5;
   char setB[] = {'a','b','c'};
 
   int R[sizeA][sizeB];
@@ -27,11 +29,11 @@ int main() {
     cout <<endl;
   }
  
- struct icPair relations[4] = {{1,'a'}, {2, 'c'}, {3,'b'}, {4,'b'}};
+ struct icPair relations[5] = {{1,'a'}, {2, 'c'}, {3,'b'}, {4,'b'}, {1,'c'}};
 
                                   // Where relations[i].first = setA...
- for(int i = 0; i < sizeA; i++){  // i anchors search in ordered pair set
-   for(int j = 0; j < sizeA; j ++){ //Iterate through numbers for match
+ for(int i = 0; i < numPairs; i++){  // i should match num of pairs
+   for(int j = 0; j < sizeA; j ++){ //Iterate through setA for match
       if(relations[i].first == setA[j]){
         for(int k = 0; k < sizeB; k++){// Search for matching B elem
           if(relations[i].second == setB[k]){
@@ -59,5 +61,5 @@ void printColumnHead(char set[], int size){
   cout << "  ";
   for(int i = 0; i < size; i++){cout << setw(6) << set[i];}
   cout << endl;
-  cout << "_____________________" << endl;
+  cout << "___________________" << endl;
 }
