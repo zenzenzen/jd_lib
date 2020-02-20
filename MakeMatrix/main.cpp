@@ -1,8 +1,7 @@
 #include <iostream>
 #include <iomanip>
+#include "MatrixUtil.hpp"
 using namespace std;
-
-void printColumnHead(char set[], int size);
 
 struct icPair{
   int first;
@@ -57,9 +56,3 @@ int main() {
   return 0;
 }
 
-void printColumnHead(char set[], int size){
-  cout << "  ";
-  for(int i = 0; i < size; i++){cout << setw(6) << set[i];}
-  cout << endl;
-  cout << "___________________" << endl;
-}
