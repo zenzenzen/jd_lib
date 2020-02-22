@@ -68,20 +68,14 @@ class LinkedList{
             // General non-zero cases
             else
             { 
-                temp->element = head->element;      // This always happens
-                
-                if(head->next == NULL){
-                    delete head;                    // When one node:
-                    head = tail = NULL;             // Reset values to EMPTY
-                }
-                
-                else{                               // When more than one node:
-                    temp->next = head->next;        // Store head data first
-                    delete head;
-                    head = temp->next;              // Next element is now head
-                }
-                return *temp->element;
-            }// End-Else              
+                temp->element = head->element;  // Copy head data first.             
+                temp->next = head->next;        
+                                                // No need to check one-node case
+                delete head;                    // because operation for n = many
+                head = temp->next;              // also works for n = 1.
+                                                // If next is NULL, then head is NULL
+                return *temp->element;          // it makes virtually no difference
+            }// End-Else                           so I've dropped the condition checks.
         }
 
         int Find(int searchTerm){
