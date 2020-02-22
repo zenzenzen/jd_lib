@@ -3,6 +3,7 @@
 #include "MatrixUtil.hpp"
 using namespace std;
 
+//stands for _integer_char_pair
 struct icPair{
   int first;
   char second;
