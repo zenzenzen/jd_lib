@@ -1,23 +1,26 @@
 #include "LinkedList.hpp"
 
 class Queue : public LinkedList{
+        //Inherited: head and tail
     protected:
-        Node * front;
-        Node * back;
+        Node * frontOfLine;
+        Node * backOfLine;
 
     public:
         Queue(){
-            front = back = NULL;
+            frontOfLine = backOfLine = NULL;
         }
         ~Queue();
 
         Queue(char input){
             Append(input);
-            front = tail;   // Queue grows to the 'right'
-            back = head;    // and shortens from the 'left'
+            backOfLine = tail;   // Queue grows to the 'right'
+            frontOfLine = head;    // and shortens from the 'left'
         }
 
         char Dequeue(void){
-            
+            Remove();       //
+            frontOfLine = head;
         }
+        
 };
