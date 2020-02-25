@@ -3,13 +3,13 @@
 
 #include <iostream>
 #include <stdio.h>
-#define PRINTDATA "\nThis node contains: %d\n"
+#define PRINTDATA "\nThis node contains: %c\n"
 #define ISEMPTY "\nThere are no nodes.\n"
 #define NOMATCH "\nNo matching element found.\n"
 #define MATCH   "\nMatch was found!\n"
 
 struct Node{
-    int *element;
+    char *element;
     Node *next;
 };
 
@@ -23,7 +23,7 @@ class LinkedList{
         LinkedList(){
             head = tail = NULL;
         }
-
+        ~LinkedList();
         // Works in O(1) time
         bool IsEmpty(){
             if(head == tail){return true;}
@@ -31,7 +31,7 @@ class LinkedList{
         }// End IsEmpty
 
         // Works in O(1) time || Doesn't include "full" condition check, only "empty"
-        void Append(int data){
+        void Append(char data){
             Node *addThis = new Node;  // Get node from heap
 
             addThis->next = NULL;      // Set next to NULL
@@ -59,7 +59,7 @@ class LinkedList{
         }// End Traverse
 
         // Works in O(1)
-        int Remove(void){
+        char Remove(void){
             Node *temp;                         // Local scope is OK
 
             //  When empty
@@ -80,7 +80,7 @@ class LinkedList{
             }// End-Else                           so I've dropped the condition checks.
         }
 
-        bool Find(int searchTerm){
+        bool Find(char searchTerm){
             
             Node * trailingPtr;
             Node * leadingPtr;
