@@ -14,13 +14,19 @@ class Queue : public LinkedList{
 
         Queue(char input){
             Append(input);
-            backOfLine = tail;   // Queue grows to the 'right'
-            frontOfLine = head;    // and shortens from the 'left'
+            backOfLine = tail;   // Queue grows to the 'right'| people line up
+            frontOfLine = head;    // and shortens at the 'left' | people leave
         }
 
         char Dequeue(void){
             Remove();       //
             frontOfLine = head;
         }
-        
+
+        //modified to only check Queue specific values.
+        bool IsEmpty(){
+            bool output;
+            (frontOfLine == backOfLine) ? (output = true): (output = false);
+            return output;
+        }
 };
