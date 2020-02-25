@@ -5,6 +5,8 @@
 #include <stdio.h>
 #define PRINTDATA "\nThis node contains: %d\n"
 #define ISEMPTY "\nThere are no nodes.\n"
+#define NOMATCH "\nNo matching element found.\n"
+#define MATCH   "\nMatch was found!\n"
 
 struct Node{
     int *element;
@@ -78,10 +80,38 @@ class LinkedList{
             }// End-Else                           so I've dropped the condition checks.
         }
 
-        int Find(int searchTerm){
-            // Look for node with the term. 
-            // return the value and delete from the list.
-        }
+        bool Find(int searchTerm){
+            
+            Node * trailingPtr;
+            Node * leadingPtr;
+            trailingPtr = head;
+            
+            if(*trailingPtr->element == searchTerm){
+                leadingPtr = head->next;
+                delete head;
+                head = leadingPtr; //Also works for one node case (set head = NULL)
+                printf(MATCH);
+                return true;
+            }
+            else if(*trailingPtr->element != searchTerm){
+                while(leadingPtr){
+                    if(*leadingPtr->element == searchTerm){         
+                        trailingPtr->next = leadingPtr->next;   // Bridge gap b/w nodes
+                        delete leadingPtr;                      // Remove found element
+                        printf(MATCH);
+                        return true;
+                    }// end-if: Stop and quit scope
+                    else{
+                        trailingPtr = leadingPtr;
+                        leadingPtr = leadingPtr->next;
+                    }// end-else: Set up next loop
+                }//end-while
+
+                printf(NOMATCH);    //If nothing found in the list...
+                return false;
+            }
+        }// End-Find
+
 };//End-LinkedList-Class
 
 
