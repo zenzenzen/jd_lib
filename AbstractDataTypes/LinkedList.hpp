@@ -65,7 +65,7 @@ class LinkedList{
             //  When empty
             if(head == tail){
                 printf(ISEMPTY);
-                return 0;
+                return -1;
             }
             // General non-zero cases
             else
