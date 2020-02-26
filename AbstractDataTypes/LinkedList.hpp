@@ -79,7 +79,7 @@ class LinkedList{
                 return *temp->element;          // it makes virtually no difference
             }// End-Else                           so I've dropped the condition checks.
         }
-
+            //Time complexity is O(N)
         bool Find(char searchTerm){
             
             Node * trailingPtr;
@@ -87,9 +87,9 @@ class LinkedList{
             trailingPtr = head;
             
             if(*trailingPtr->element == searchTerm){
-                leadingPtr = head->next;
+                leadingPtr->next = head->next;
                 delete head;
-                head = leadingPtr; //Also works for one node case (set head = NULL)
+                head = leadingPtr->next; //Also works for one node case (set head = NULL)
                 printf(MATCH);
                 return true;
             }

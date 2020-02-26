@@ -1,3 +1,6 @@
+#ifndef STACK_HPP
+#define STACK_HPP
+
 #include "LinkedList.hpp"
 
 class Stack : public LinkedList{
@@ -10,6 +13,7 @@ class Stack : public LinkedList{
         }
         ~Stack();
 
+        // Works in O(1) time
         void Push(char data){
             Node *stackThis = new Node;  // Get node from heap
 
@@ -19,6 +23,7 @@ class Stack : public LinkedList{
              head = top = stackThis;     // No matter what, new item
         }                                // is going to be at the TOP.
 
+        // Works in O(1) time
         char Pop(){
             char temp;
             temp = *top->element;       // Copy return data
@@ -28,13 +33,17 @@ class Stack : public LinkedList{
             return temp;
         }
 
+        // Works in O(1) time
         char Peek(){
             return *top->element;
         }
 
+        // Works in O(1) time
         bool IsEmpty(){
             bool x;
             (top == NULL) ? x = true : x = false ;  // Had to try it out.
             return x;                               // Same as if-else.
         }
 };
+
+#endif

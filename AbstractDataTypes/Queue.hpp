@@ -1,3 +1,6 @@
+#ifndef QUEUE_HPP
+#define QUEUE_HPP
+
 #include "LinkedList.hpp"
 
 class Queue : public LinkedList{
@@ -8,22 +11,25 @@ class Queue : public LinkedList{
 
     public:
         Queue(){
+            head = tail =        // Accounting for backwards compatibility
             frontOfLine = backOfLine = NULL;
         }
         ~Queue();
 
+        // Works in O(1) time
         void Enqueue(char input){
             Append(input);       // Go to end, add node, set next to NULL.
             backOfLine = tail;   // Queue grows to the 'right'| people line up
             frontOfLine = head;  // and shortens at the 'left' | people leave
         }
-
+        // Works in O(1) time
         char Dequeue(void){
             Remove();       //
             frontOfLine = head;
         }
 
         //modified to only check Queue specific values.
+        // Works in O(1) time
         bool IsEmpty(){
             bool output;
             (frontOfLine == backOfLine) ? (output = true): (output = false);
@@ -85,9 +91,9 @@ class PriorityQueue : public Queue{
                 frontOfLine = head =
                 backOfLine = tail = freshInsert;       // Maintain inherited values
             }
-            else if(input > *frontOfLine->element){     
-                    freshInsert->next = frontOfLine;
-                    head = frontOfLine = freshInsert;
+            else if(input > *frontOfLine->element){    // Because order here matters, 
+                    freshInsert->next = frontOfLine;   // there's a need to account 
+                    head = frontOfLine = freshInsert;  // for the frontOfLine condition.
                 }// End-Else-If
             else{        
                 while(currentNode){
@@ -108,7 +114,6 @@ class PriorityQueue : public Queue{
             }// End-Else
             currentNode = previousNode = NULL;            // Reset traversal values
         }// End-Insert-Method declaration
+}; // END OF QUEUE DECLARATION
 
-        
-
-};
+#endif
