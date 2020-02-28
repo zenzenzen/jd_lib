@@ -14,7 +14,32 @@ class Stack : public LinkedList{
         ~Stack();
 
         // Works in O(1) time
-        void Push(char data){
+        void Push(char data);                       // is going to be at the TOP.
+
+        // Works in O(1) time
+        char Pop();
+
+        // Works in O(1) time
+        char Peek();
+
+        // Works in O(1) time
+        bool IsEmpty();
+
+        // Works in O(n) time
+        void ShowStack();
+};
+
+
+            Stack::Stack(){
+                top = head = tail = NULL;   // Prevent uninitialized value access
+            }
+            Stack::~Stack(){
+                cout << "Removing Stack" << endl;
+            }
+
+
+        // Works in O(1) time
+        void Stack::Push(char data){
             Node *stackThis = new Node;  // Get node from heap
 
             stackThis->next = top;       // Set next to last Top
@@ -24,7 +49,7 @@ class Stack : public LinkedList{
         }                                // is going to be at the TOP.
 
         // Works in O(1) time
-        char Pop(){
+        char Stack::Pop(){
             char temp;
             temp = *top->element;       // Copy return data
             top = top->next;            // Set new TOP
@@ -34,16 +59,32 @@ class Stack : public LinkedList{
         }
 
         // Works in O(1) time
-        char Peek(){
+        char Stack::Peek(){
             return *top->element;
         }
 
         // Works in O(1) time
-        bool IsEmpty(){
+        bool Stack::IsEmpty(){
             bool x;
             (top == NULL) ? x = true : x = false ;  // Had to try it out.
             return x;                               // Same as if-else.
         }
-};
 
+        void Stack::ShowStack(){
+            string output = "Top -> ";
+            if(IsEmpty()){
+                output += "NULL";
+                cout << output << endl;
+            }
+            else{
+                Node *iterator = top;
+                while(iterator){
+                    output = output + iterator->element + " -> ";
+                    cout << output << endl;
+                    iterator = iterator->next;
+                }
+                output += "(Bottom of stack)";
+                cout << output << endl;
+            }
+        }
 #endif

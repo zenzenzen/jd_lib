@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <stdio.h>
+using namespace std;
+
 #define PRINTDATA "\nThis node contains: %c\n"
 #define ISEMPTY "\nThere are no nodes.\n"
 #define NOMATCH "\nNo matching element found.\n"
@@ -20,23 +22,41 @@ class LinkedList{
         Node *tail;
 
     public:
-        LinkedList(){
-            head = tail = NULL;
-        }
+        LinkedList();
         ~LinkedList();
         // Works in O(1) time
-        bool IsEmpty(){
+        bool IsEmpty();
+
+        // Works in O(1) time || Doesn't include "full" condition check, only "empty"
+        void Append(char data);
+
+        // Works in O(n)
+        void Traverse();
+
+        // Works in O(1)
+        char Remove(void);
+
+        //Works in O(N)
+        bool Find(char searchTerm);
+
+};//End-LinkedList-Class-Declaration
+
+    LinkedList::LinkedList(){
+            head = tail = NULL;
+        }
+    LinkedList::~LinkedList(){
+        cout << "Deleting nodes..." << endl;
+    }
+
+bool LinkedList::IsEmpty(){
             if(head == tail){return true;}
             else{return false;}
         }// End IsEmpty
 
-        // Works in O(1) time || Doesn't include "full" condition check, only "empty"
-        void Append(char data){
+void LinkedList::Append(char data){
             Node *addThis = new Node;  // Get node from heap
-
-            addThis->next = NULL;      // Set next to NULL
             * addThis->element = data; // Add new data to new node.
-
+            addThis->next = NULL;      // Set next to NULL
             tail->next= addThis;       // Set current tail node to point to new tail.
             tail = addThis;            // Set LL tail pointer to new tail.
 
@@ -45,8 +65,8 @@ class LinkedList{
             }
         }// End Append
 
-        // Works in O(n)
-        void Traverse(){
+// Works in O(n)
+void LinkedList:: Traverse(){
             Node *iterate = head;
 
             if(iterate == NULL){                        // Easy check first
@@ -59,7 +79,7 @@ class LinkedList{
         }// End Traverse
 
         // Works in O(1)
-        char Remove(void){
+char LinkedList::Remove(void){
             Node *temp;                         // Local scope is OK
 
             //  When empty
@@ -80,7 +100,7 @@ class LinkedList{
             }// End-Else                           so I've dropped the condition checks.
         }
             //Time complexity is O(N)
-        bool Find(char searchTerm){
+bool LinkedList::Find(char searchTerm){
             
             Node * trailingPtr;
             Node * leadingPtr;
@@ -111,8 +131,6 @@ class LinkedList{
                 return false;
             }
         }// End-Find
-
-};//End-LinkedList-Class
 
 
 #endif
