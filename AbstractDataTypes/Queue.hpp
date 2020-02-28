@@ -24,8 +24,9 @@ class Queue : public LinkedList{
         }
         // Works in O(1) time
         char Dequeue(void){
-            Remove();       //
+            char temp = Remove();       //
             frontOfLine = head;
+            return temp;
         }
 
         //modified to only check Queue specific values.
